@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import '../styles/AdminTableStyles.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function Table({ users, setUsers }) {
   const headers = {
@@ -9,7 +10,7 @@ export default function Table({ users, setUsers }) {
 
   async function deleteUser(id) {
     setUsers((prevState) => prevState.filter((user) => user.id !== id));
-    await fetch(`http://localhost:3001/users/${id}`, {
+    await fetch(`${PROTOCOL}://${HOST}/users/${id}`, {
       method: 'DELETE',
       mode: 'cors',
       headers,

@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import DeliveryContext from '../context/DeliveryContext';
 import '../styles/OrderDetails.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function OrderSelerDetails() {
-  // const history = useHistory();
-  // const { location: { pathname } } = history;
   const sellerOrder = 'seller_order_details';
   const { orderDetails, setOrderDetails } = useContext(DeliveryContext);
   const [sales, setSales] = useState([]);
@@ -24,7 +22,7 @@ export default function OrderSelerDetails() {
     const data = {
       status: target.name,
     };
-    const request = await fetch(`http://localhost:3001/sales/${orderDetails.id}`, {
+    const request = await fetch(`${PROTOCOL}://${HOST}/sales/${orderDetails.id}`, {
       method: 'PUT',
       mode: 'cors',
       headers,

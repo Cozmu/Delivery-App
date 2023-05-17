@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import '../styles/OrdersStyle.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function MyOrders() {
   const [orders, setOrders] = useState([]);
@@ -25,7 +26,7 @@ export default function MyOrders() {
     console.log(newUser);
 
     async function getOrders() {
-      const request = await fetch(`http://localhost:3001/sales/orderUser/${newUser.id}`);
+      const request = await fetch(`${PROTOCOL}://${HOST}/sales/orderUser/${newUser.id}`);
       const response = await request.json();
 
       if (response.message === 'User without orders') return setOrders([]);

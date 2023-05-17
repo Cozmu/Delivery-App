@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import AdminForm from '../components/AdminForm';
 import NavBar from '../components/NavBar';
 import Table from '../components/Table';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
@@ -13,7 +14,7 @@ export default function Admin() {
 
   useEffect(() => {
     const getUser = async () => {
-      const request = await fetch('http://localhost:3001/users', {
+      const request = await fetch(`${PROTOCOL}://${HOST}/users`, {
         method: 'GET',
         mode: 'cors',
         headers,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../styles/Cards.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function Cards() {
   const history = useHistory();
@@ -23,7 +24,7 @@ export default function Cards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/products');
+        const response = await fetch(`${PROTOCOL}://${HOST}/products`);
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {

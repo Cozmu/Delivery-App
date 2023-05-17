@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import DeliveryContext from '../context/DeliveryContext';
 import '../styles/OrdersStyle.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function Seler() {
   const history = useHistory();
@@ -20,7 +21,7 @@ export default function Seler() {
   }
 
   async function requestSales() {
-    const request = await fetch('http://localhost:3001/sales', {
+    const request = await fetch(`${PROTOCOL}://${HOST}/sales`, {
       method: 'GET',
       mode: 'cors',
       headers,

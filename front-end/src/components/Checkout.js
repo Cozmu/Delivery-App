@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../styles/CheckoutStyles.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function Checkout() {
   const history = useHistory();
@@ -18,7 +19,7 @@ export default function Checkout() {
   const [order, setOrder] = useState({});
 
   async function requestUser() {
-    const request = await fetch('http://localhost:3001/users/seller');
+    const request = await fetch(`${PROTOCOL}://${HOST}/users/seller`);
     const response = await request.json();
     setSeller(response);
   }
@@ -71,7 +72,7 @@ export default function Checkout() {
       deliveryNumber: order.number,
       products: arr,
     };
-    const request = await fetch('http://localhost:3001/sales', {
+    const request = await fetch(`${PROTOCOL}://${HOST}/sales`, {
       method: 'POST',
       mode: 'cors',
       headers,

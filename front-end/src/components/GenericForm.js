@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router-dom';
 import DeliveryContext from '../context/DeliveryContext';
 import '../styles/GenericFormStyles.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function GenericForm() {
   const history = useHistory();
@@ -46,7 +47,7 @@ export default function GenericForm() {
       email: user.email,
       password: user.password,
     };
-    const request = await fetch('http://localhost:3001/login', {
+    const request = await fetch(`${PROTOCOL}://${HOST}/login`, {
       method: 'POST',
       mode: 'cors',
       headers,
@@ -110,7 +111,7 @@ export default function GenericForm() {
       password: user.password,
       role: 'customer',
     };
-    const request = await fetch('http://localhost:3001/register', {
+    const request = await fetch(`${PROTOCOL}://${HOST}/register`, {
       method: 'POST',
       mode: 'cors',
       headers,

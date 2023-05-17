@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/AdminFormStyles.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function AdminForm() {
   const [registerIsDisabled, setRegisterIsDisabled] = useState(true);
@@ -60,7 +61,7 @@ export default function AdminForm() {
       password: user.password,
       role: user.role,
     };
-    const request = await fetch('http://localhost:3001/admin', {
+    const request = await fetch(`${PROTOCOL}://${HOST}/admin`, {
       method: 'POST',
       mode: 'cors',
       headers,

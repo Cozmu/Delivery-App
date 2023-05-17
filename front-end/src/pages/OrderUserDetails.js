@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import '../styles/OrderDetails.css';
+import { HOST, PROTOCOL } from '../utils/apiHost';
 
 export default function OrderUserDetails() {
   const { id } = useParams();
@@ -14,7 +15,7 @@ export default function OrderUserDetails() {
 
   useEffect(() => {
     async function requestOrderDetails() {
-      const request = await fetch(`http://localhost:3001/sales/${id}`);
+      const request = await fetch(`${PROTOCOL}://${HOST}/sales/${id}`);
       const result = await request.json();
       console.log('get', result);
       setOrderDetails(result);
@@ -27,7 +28,7 @@ export default function OrderUserDetails() {
     const data = {
       status: 'Entregue',
     };
-    const request = await fetch(`http://localhost:3001/sales/${orderDetails.id}`, {
+    const request = await fetch(`${PROTOCOL}://${HOST}/sales/${orderDetails.id}`, {
       method: 'PUT',
       mode: 'cors',
       headers,
