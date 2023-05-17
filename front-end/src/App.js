@@ -16,6 +16,7 @@ function App() {
   useEffect(() => {
     if (location.pathname === '/') { history.push('login'); }
   });
+  // comentario :)
 
   return (
     <Switch>
