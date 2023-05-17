@@ -1,4 +1,4 @@
-require('dotenv/config');
+require('dotenv').config();
 
 const environment = process.env.NODE_ENV || 'test';
 
@@ -11,7 +11,7 @@ const suffix = { // rebuild
 };
 
 const options = {
-  host: process.env.HOSTNAME || process.env.MYSQLHOST || 'localhost',
+  host: process.env.MYSQLHOST || 'localhost',
   port: process.env.MYSQLPORT || '6057',
   database:
     `${process.env.MYSQLDATABASE || 'delivery-app'}${suffix[environment] || suffix.test}`,
