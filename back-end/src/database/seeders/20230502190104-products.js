@@ -1,4 +1,4 @@
-const { PROTOCOL, HOST } = require('../../../../front-end/src/utils/apiHost');
+const { PROTOCOL, HOST } = require('../../utils/apiHost');
 
 module.exports = {
   up: async (queryInterface) => {
