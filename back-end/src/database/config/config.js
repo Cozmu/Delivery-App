@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv/config');
 
 const environment = process.env.NODE_ENV || 'test';
 
@@ -11,12 +11,12 @@ const suffix = { // rebuild
 };
 
 const options = {
-  host: process.env.MYSQLHOST || 'localhost',
-  port: process.env.MYSQLPORT || '6057',
+  host: process.env.MYSQL_HOST || 'localhost',
+  port: process.env.MYSQL_PORT || '3306',
   database:
-    `${process.env.MYSQLDATABASE || 'delivery-app'}${suffix[environment] || suffix.test}`,
-  username: process.env.MYSQLUSER || 'root',
-  password: process.env.MYSQLPASSWORD || '123456',
+    `${process.env.MYSQL_DB_NAME || 'delivery-app'}${suffix[environment] || suffix.test}`,
+  username: process.env.MYSQL_USER || 'root',
+  password: process.env.MYSQL_PASSWORD || '123456',
   dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',

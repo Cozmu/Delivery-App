@@ -9,32 +9,24 @@ services:
     working_dir: /front-end
     volumes:
       - ./front-end:/front-end
-  #   depends_on:
-  #     backend:
-  #       condition: service_started
-  # backend:
-  #   container_name: backend
-  #   build: ./back-end
-  #   ports:
-  #     - 3001:3001
-  #   platform: linux/x86_64
-  #   working_dir: /back-end
-  #   command: dev
-  #   volumes:
-  #     - ./back-end:/back-end
-  #   depends_on:
-  #     database:
-  #       condition: service_started
-  #   environment:
-  #     - JWT_SECRET=jwt_secret
-  #     # Os dados abaixo se referem ao container `db`
-  #     # Dica: Relembre aqui da comunicação interna entre containers
-  #     - NODE_ENV=development
-  #     - API_PORT=3001
-  #     - MYSQL_HOST=database
-  #     - MYSQL_PORT=3306
-  #     - MYSQL_USER=root
-  #     - MYSQL_PASSWORD=123456
+    depends_on:
+      backend:
+        condition: service_started
+  backend:
+    container_name: backend
+    build: ./back-end
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    working_dir: /back-end
+    command: dev # em ambiente de desenvolvimento
+    volumes:
+      - ./back-end:/back-end
+    depends_on:
+      database:
+        condition: service_started
+    env_file:
+      - ./back-end/.env
   database:
     image: mysql:8.0.21
     container_name: database
@@ -47,7 +39,5 @@ services:
     cap_add:
       - SYS_NICE # Deve omitir alertas menores
 networks:
-  # Rede padrão, criada automaticamente
   default:
-    # Dá um nome específico à rede padrão
     name: delivery-app

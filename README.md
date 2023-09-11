@@ -28,15 +28,12 @@ Delivery App é um projeto que simula um aplicativo de delivery para uma distrib
 
 ## Configuração do Ambiente de Desenvolvimento
 
-1. Clone este repositório: `git clone git@github.com:bmediato/DeliveryApp.git`
-2. Navegue até o diretório do projeto: `cd DeliveryApp`
-3. Instale as dependências: `npm install`e `npm run dev:prestart`
-4. Inicialize o container: `docker-compose up -d`
-5. Configure o banco de dados MySQL:
- - Renomeie o arquivo .env.example para .env e configure as variáveis de ambiente relacionadas ao banco de dados.
-6. Popule o banco de dados: `npm run db:reset`
-7. Inicialize o back-end: `cd back-end` e `npm run dev`
-8. Inicialize o fron-end: `cd front-end` e `npm start`
+- Clone em seu computador (via SHH).
+- Abra um novo terminal em seu VSCode.
+- Certifique-se que tem o node e o docker instalados na sua maquina.
+- Faça uma copia do arquivo `.env.exemple` e renomeie para `.env`. 
+- execute o comando `docker-compose up -d`.
+- Navegue ate o diretório `/back-end` pelo terminal e rode o comando `npm run prestart`.
 
 ## Contribuição
 
