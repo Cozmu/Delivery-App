@@ -27,7 +27,6 @@ export default function NavBar() {
 
   const checkRole = user?.role === 'customer';
   const isAdmin = user?.role === 'administrator';
-  console.log(isAdmin);
 
   return (
     <Navbar

@@ -1,5 +1,5 @@
 /src/database/
-seeders
 /src/tests/
 jest.config.js
 /src/coverage
+/src/database/seeders/*
